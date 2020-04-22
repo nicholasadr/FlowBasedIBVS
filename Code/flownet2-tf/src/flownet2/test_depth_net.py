@@ -7,6 +7,7 @@ FLAGS = None
 
 
 def main():
+    os.environ["CUDA_VISIBLE_DEVICES"] = "3"
     # Create a new network
     net = FlowNet2(mode=Mode.TEST)
 
