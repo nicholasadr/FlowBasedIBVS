@@ -3,14 +3,14 @@
 TF_INC = `python -c "import tensorflow; print(tensorflow.sysconfig.get_include())"`
 
 ifndef CUDA_HOME
-    CUDA_HOME := /opt/cuda/8.0
+    CUDA_HOME := /usr/local/cuda
 endif
 
 CC        = gcc -O2 -pthread
 CXX       = g++
 GPUCC     = nvcc
 CFLAGS    = -std=c++11 -I$(TF_INC) -I"$(CUDA_HOME)/include" -DGOOGLE_CUDA=1
-GPUCFLAGS = -c --expt-relaxed-constexpr
+GPUCFLAGS = -c
 LFLAGS    = -pthread -shared -fPIC
 GPULFLAGS = -x cu -Xcompiler -fPIC
 CGPUFLAGS = -L$(CUDA_HOME)/lib -L$(CUDA_HOME)/lib64 -lcudart
