@@ -116,7 +116,7 @@ class Net(object):
             s.bind((HOST, PORT))
             s.listen(1)
             conn, addr = s.accept()
-            flowfile=open("./src/aaaaa/baseline_2_avg_flow.txt","a+")
+            flowfile=open("./src/aaaaa_DEPTH_NET/baseline_2_avg_flow.txt","a+")
             while True:
                 data = conn.recv(4096)
                 if not data: break
@@ -170,7 +170,7 @@ class Net(object):
                 if save_image:
                     flow_img, avg_flow = flow_to_image(pred_flow_np)
                     flowfile.write("Average flow - depth-network"+str(data).zfill(5)+":"+str(avg_flow))
-                    full_out_path = os.path.join('./src/image_baseline_2_output/', unique_name + '.png')
+                    full_out_path = os.path.join('./src/image_baseline_2_output_DEPTH_NET/', unique_name + '.png')
                     imsave(full_out_path, flow_img)
 
                 if save_flo:
@@ -178,7 +178,7 @@ class Net(object):
                     write_flow(pred_flow_np, full_out_path)
 
                 shan='test.depth.'
-                full_out_path = os.path.join('./src/image_baseline_2_output/',shan+str(data).zfill(5)+ '.png')
+                full_out_path = os.path.join('./src/image_baseline_2_output_DEPTH_NET/',shan+str(data).zfill(5)+ '.png')
                 imsave(full_out_path, depth_img)
                 print('image saved at desired location  ')
                 image = np.asarray(imread(full_out_path))
