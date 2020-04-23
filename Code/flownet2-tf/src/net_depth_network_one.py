@@ -64,6 +64,8 @@ class Net(object):
         return
 
     def test(self, checkpoint,out_path, save_image=True, save_flo=True):
+        if not os.path.exists(out_path):
+            os.makedirs(out_path)
 
         # TODO: This is a hack, we should get rid of this
         training_schedule = LONG_SCHEDULE
